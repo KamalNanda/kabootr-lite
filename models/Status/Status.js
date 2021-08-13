@@ -8,12 +8,15 @@ const statusSchema = new Schema({
         required : true
     },  
     createdBy : {
-        type : Object,
+        type : String,
         required : true
     },   
+    creatorName : {
+        type : String, 
+    },
     createdOn : {
-        type : Date,
-        default : Date.now
+        type : Number,
+        default : Date.now()
     } 
 })
 

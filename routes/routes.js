@@ -1,5 +1,6 @@
 const express= require('express')  
-const userControllers = require('../controllers/blog') 
+const userControllers = require('../controllers/User/User') 
+const statusControllers = require('../controllers/Status/Status') 
 const router = express.Router() 
 
 
@@ -10,9 +11,10 @@ router.get('/' , (req , res , next)=> {
 // USER ROUTES
 router.post('/user/register', userControllers.register)
 router.post('/user/login', userControllers.login)
-router.get('/user/follow', userControllers.followUser)
+router.put('/user/follow', userControllers.followUser)
 
 // STATUS ROUTES
-router.post('/status/create', userControllers.createNewStatus)
-router.get('/user/fetchStatus', userControllers.fetchStatusByFollowingList)
+router.post('/status/create', statusControllers.createNewStatus)
+router.get('/status/fetchStatus/:userId', statusControllers.fetchStatusByFollowingList)
 
+module.exports = router

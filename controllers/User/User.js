@@ -79,7 +79,7 @@ const followUser = async (req,res,next) => {
           next(error)
           return res.status(500).json({error : 'Internal Server Error'})
       }  
-      res.status(200).json({note, message: "Liked"}) 
+      res.status(200).json({user, message: "User Followed"}) 
   
   } 
 
