@@ -6,11 +6,7 @@ const userSchema = new Schema({
     username : {
         type : String,
         required : true
-    }, 
-    email : {
-        type : String,
-        required : true 
-    },
+    },  
     password : {
         type : String,
         required : true
@@ -26,11 +22,7 @@ const userSchema = new Schema({
     createdStatus : {
         type : Array,
         default : []
-    },
-    likedStatus : {
-        type : Array,
-        default : []
-    }, 
+    } 
 })
 
 module.exports = mongoose.model("User" , userSchema)

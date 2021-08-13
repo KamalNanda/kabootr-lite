@@ -1,12 +1,10 @@
 const User = require('../../models/User/User')
 
 const register = async (req, res, next) => {
-    const {username, email, password} = req.body
-    let isUserNameExist, isEmailExist
-
+    const {username, password} = req.body
+    let isUserNameExist  
     try {
-        isUserNameExist = await User.findOne({username})
-        isEmailExist = await User.findOne({email})
+        isUserNameExist = await User.findOne({username}) 
     } catch (error){
         console.log(error)
         next(error)
@@ -15,13 +13,9 @@ const register = async (req, res, next) => {
 
     if(isUserNameExist){
         return res.status(409).json({error : 'User already exists with the entered Username'}) 
-    }
-    if(isEmailExist){
-        return res.status(409).json({error : 'User already exists with the entered Email'}) 
-    }
-
+    } 
     let newUser = new User({
-        username, email, password
+        username, password
     })
     try{
         await newUser.save()
@@ -34,17 +28,17 @@ const register = async (req, res, next) => {
 }
 
 const login = async (req, res, next) => {
-    const {email, password} = req.body
+    const {username, password} = req.body
     let isUserExist 
     try{
-        isUserExist = await User.findOne({email})
+        isUserExist = await User.findOne({username})
     } catch (error){
         console.log(error)
         next(error)
         return res.status(500).json({error : 'Internal Server Error'})
     }
     if(!isUserExist){
-        return res.status(404).json({error : 'User not found with the entered Email'})
+        return res.status(404).json({error : 'User not found with the entered User Name'})
     } 
     if(isUserExist.password !== password){
         return res.status(409).json({error : 'Entered Password is Incorrect'})
@@ -52,6 +46,43 @@ const login = async (req, res, next) => {
     res.status(201).json({message : 'User Logged In', user : isUserExist})
 }
 
+const followUser = async (req,res,next) => {
+    const {followerId, userId} = req.body 
+    let follower, user
+    try{
+        follower = await User.findById(followerId)
+        user = await User.findById(userId)
+    }
+    catch(error){
+        console.log(error)
+        next(error)
+        return res.status(500).json({error : 'Internal Server Error'})
+    }  
+      let followingsList = user.followings
+      let followersList = follower.followers
+      if(followingsList.indexOf(followerId) === -1 ){                   // User not following the follower yet
+        followingsList.push(followerId)                                 // User following the follower
+        followersList.push(userId)
+      }
+      else{                                                             // User already following the follower   
+        followingsList.splice(followingsList.indexOf(followerId), 1)    // User unfollowing the follower
+        followersList.splice(followersList.indexOf(userId), 1)      
+      }
+      user.followings = followingsList
+      follower.followers = followersList
+      try{
+        await user.save()
+        await follower.save()
+      }
+      catch(error){
+          console.log(error)
+          next(error)
+          return res.status(500).json({error : 'Internal Server Error'})
+      }  
+      res.status(200).json({note, message: "Liked"}) 
+  
+  } 
 
 exports.register = register
 exports.login = login
+exports.followUser = followUser

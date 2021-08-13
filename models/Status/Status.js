@@ -14,15 +14,7 @@ const statusSchema = new Schema({
     createdOn : {
         type : Date,
         default : Date.now
-    },
-    likedBy : {
-        type : Array, 
-        default : []
-    },
-    comments : {
-        type : Array,
-        defaults : []
-    }
+    } 
 })
 
 module.exports = mongoose.model("Status" , statusSchema)
