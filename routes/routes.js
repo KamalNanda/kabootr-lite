@@ -5,7 +5,7 @@ const router = express.Router()
 
 
 router.get('/' , (req , res , next)=> {
-    res.json("Blogging System Made with ❤ By Kamal Nanda")
+    res.json("Kabootr System Made with ❤ By Kamal Nanda")
 }) 
 
 // USER ROUTES
@@ -15,7 +15,7 @@ router.put('/user/follow', userControllers.followUser)
 router.get('/user/getallusers', userControllers.fetchAllUsers)
 router.get('/user/fetchFollowings/:userId', userControllers.fetchFollowings)
 router.get('/user/fetchFollowers/:userId', userControllers.fetchFollowers)
-router.get('/user/:userId', userControllers.fetchUser)
+router.get('/user/:userId', userControllers.fetchSingleUser)
 // STATUS ROUTES
 router.post('/status/create', statusControllers.createNewStatus)
 router.get('/status/fetchStatus/:userId', statusControllers.fetchStatusByFollowingList)

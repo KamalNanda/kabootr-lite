@@ -129,11 +129,11 @@ const fetchFollowers = async (req,res,next) => {
     res.status(200).json({followers})
 }
 
-const fetchUser = (req, res, next) => {
+const fetchSingleUser = async (req, res, next) => {
     const {userId} = req.params
     let user
     try{
-        user = findById(userId)        
+        user = await User.findById(userId)        
     } catch(error){
         console.log(error)
         next(error)
@@ -148,4 +148,4 @@ exports.fetchAllUsers = fetchAllUsers
 exports.followUser = followUser
 exports.fetchFollowers = fetchFollowers
 exports.fetchFollowings = fetchFollowings
-exports.fetchUser = fetchUser
+exports.fetchSingleUser = fetchSingleUser
