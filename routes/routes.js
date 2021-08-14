@@ -12,7 +12,9 @@ router.get('/' , (req , res , next)=> {
 router.post('/user/register', userControllers.register)
 router.post('/user/login', userControllers.login)
 router.put('/user/follow', userControllers.followUser)
-
+router.get('/user/getallusers', userControllers.fetchAllUsers)
+router.get('/user/fetchFollowings/:userId', userControllers.fetchFollowings)
+router.get('/user/fetchFollowers/:userId', userControllers.fetchFollowers)
 // STATUS ROUTES
 router.post('/status/create', statusControllers.createNewStatus)
 router.get('/status/fetchStatus/:userId', statusControllers.fetchStatusByFollowingList)
