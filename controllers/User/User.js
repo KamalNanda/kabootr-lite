@@ -1,3 +1,4 @@
+const { findById } = require('../../models/User/User')
 const User = require('../../models/User/User')
 const fetchUsers = require('../../utils/userUtils')
 
@@ -128,6 +129,18 @@ const fetchFollowers = async (req,res,next) => {
     res.status(200).json({followers})
 }
 
+const fetchUser = (req, res, next) => {
+    const {userId} = req.params
+    let user
+    try{
+        user = findById(userId)        
+    } catch(error){
+        console.log(error)
+        next(error)
+        return res.status(500).json({error : 'Internal Server Error'})
+    }  
+    res.status(200).json({user})
+}
 
 exports.register = register
 exports.login = login
@@ -135,3 +148,4 @@ exports.fetchAllUsers = fetchAllUsers
 exports.followUser = followUser
 exports.fetchFollowers = fetchFollowers
 exports.fetchFollowings = fetchFollowings
+exports.fetchUser = fetchUser

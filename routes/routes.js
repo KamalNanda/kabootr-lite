@@ -15,6 +15,7 @@ router.put('/user/follow', userControllers.followUser)
 router.get('/user/getallusers', userControllers.fetchAllUsers)
 router.get('/user/fetchFollowings/:userId', userControllers.fetchFollowings)
 router.get('/user/fetchFollowers/:userId', userControllers.fetchFollowers)
+router.get('/user/:userId', userControllers.fetchUser)
 // STATUS ROUTES
 router.post('/status/create', statusControllers.createNewStatus)
 router.get('/status/fetchStatus/:userId', statusControllers.fetchStatusByFollowingList)
