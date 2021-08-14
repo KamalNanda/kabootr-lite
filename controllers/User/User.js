@@ -98,8 +98,8 @@ const fetchAllUsers = async () => {
     return res.status(200).json({users})
 }
 
-const fetchFollowings = async () => {
-    const {userId} = req.body.params
+const fetchFollowings = async (req,res,next) => {
+    const {userId} = req.params
     let user  
     let followings = []
     try{
@@ -113,8 +113,8 @@ const fetchFollowings = async () => {
     res.status(200).json({followings})
 }
 
-const fetchFollowers = async () => {
-    const {userId} = req.body.params
+const fetchFollowers = async (req,res,next) => {
+    const {userId} = req.params
     let user  
     let followers = []
     try{
