@@ -86,7 +86,7 @@ const followUser = async (req,res,next) => {
     }  
     res.status(200).json({user, message: "User Followed"}) 
 } 
-const fetchAllUsers = async () => {
+const fetchAllUsers = async (req, res,next) => {
     let users = []
     try{
         users = await User.find({})
@@ -98,7 +98,7 @@ const fetchAllUsers = async () => {
     return res.status(200).json({users})
 }
 
-const fetchFollowings = async (req,res,next) => {
+const fetchFollowings = async (req,res,next) => { 
     const {userId} = req.params
     let user  
     let followings = []
