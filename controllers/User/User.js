@@ -2,6 +2,7 @@ const User = require('../../models/User/User')
 
 const register = async (req, res, next) => {
     const {username, password} = req.body
+    console.log(req.body)
     let isUserNameExist  
     try {
         isUserNameExist = await User.findOne({username}) 
@@ -10,13 +11,14 @@ const register = async (req, res, next) => {
         next(error)
         return res.status(500).json({error : 'Internal Server Error'})
     }
-
+    console.log(isUerNameExist)
     if(isUserNameExist){
         return res.status(409).json({error : 'User already exists with the entered Username'}) 
     } 
     let newUser = new User({
         username, password
     })
+    console.log(newUser)
     try{
         await newUser.save()
     } catch (error){
@@ -29,6 +31,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     const {username, password} = req.body
+    console.log(res.body)
     let isUserExist 
     try{
         isUserExist = await User.findOne({username})
@@ -37,6 +40,7 @@ const login = async (req, res, next) => {
         next(error)
         return res.status(500).json({error : 'Internal Server Error'})
     }
+    console.log(isUserExist)
     if(!isUserExist){
         return res.status(404).json({error : 'User not found with the entered User Name'})
     } 

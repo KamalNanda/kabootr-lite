@@ -30,8 +30,10 @@ const createNewStatus = async (req, res, next) => {
 const fetchStatusByFollowingList = async (req, res, next) => {
     const {userId} = req.params
     let user 
+    let myStatusList = [] 
     try{
         user = await User.findById(userId)
+        myStatusList = await Status.find({createdBy : userId})
     } catch (error){
         console.log(error)
         next(error)
@@ -40,9 +42,9 @@ const fetchStatusByFollowingList = async (req, res, next) => {
     let followingList = user.followings
     if(followingList.length > 0){
         let statusList = await fetchStatusesByCreatorId(followingList)
-        return res.status(201).json({statuses : statusList})
+        return res.status(201).json({statuses : [...myStatusList, ...statusList]})
     }
-    else res.status(201).json({statuses : []})
+    else res.status(201).json({statuses : myStatusList})
 }
 
 exports.createNewStatus = createNewStatus

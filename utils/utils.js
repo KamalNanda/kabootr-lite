@@ -1,7 +1,7 @@
 const Status = require('../models/Status/Status') 
 
 const statusControllers = async (followingList) => {
-    let statusList = [] 
+    let statusList = []  
     for(let i = 0; i< followingList.length; i++){
         let statuses 
         try{
