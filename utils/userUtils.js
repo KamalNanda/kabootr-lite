@@ -1,16 +1,15 @@
 const User = require('../models/User/User')
 
 const fetchUsers = async (usersList) => {
-    let users = []
+    let users = [] 
     for(let i = 0; i< usersList.length; i++){
         let user 
         try{
-            user = User.findById(usersList[i])
+            user = await User.findById(usersList[i]) 
         } catch (error){
-            console.log(error) 
-            return res.status(500).json({error : 'Internal Server Error'})
+            console.log(error)  
         }  
-        users = [...users, user]
+        users = [...users, {username: user.username, id : user._id, followers: user.followers.length}]
     }
     return users
 }

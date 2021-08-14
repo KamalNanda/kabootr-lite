@@ -109,7 +109,7 @@ const fetchFollowings = async (req,res,next) => {
         next(error)
         return res.status(500).json({error : 'Internal Server Error'})
     }  
-    followings = await fetchUsers(user.followings)
+    followings = await fetchUsers(user.followings) 
     res.status(200).json({followings})
 }
 
