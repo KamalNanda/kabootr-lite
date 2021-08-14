@@ -1,4 +1,4 @@
-const User = require('../../models/User/User')
+const User = require('../models/User/User')
 
 const fetchUsers = async (usersList) => {
     let users = []
