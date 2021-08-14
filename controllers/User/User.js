@@ -12,8 +12,7 @@ const register = async (req, res, next) => {
         console.log(error)
         next(error)
         return res.status(500).json({error : 'Internal Server Error'})
-    }
-    console.log(isUerNameExist)
+    } 
     if(isUserNameExist){
         return res.status(409).json({error : 'User already exists with the entered Username'}) 
     } 

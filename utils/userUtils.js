@@ -9,7 +9,7 @@ const fetchUsers = async (usersList) => {
         } catch (error){
             console.log(error)  
         }  
-        users = [...users, {username: user.username, id : user._id, followers: user.followers.length}]
+        users = [...users, {username: user.username, _id : user._id}]
     }
     return users
 }
