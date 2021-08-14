@@ -1,5 +1,5 @@
 const User = require('../../models/User/User')
-const fetchUsers = require('../../utils/statusUtils')
+const fetchUsers = require('../../utils/userUtils')
 
 const register = async (req, res, next) => {
     const {username, password} = req.body
