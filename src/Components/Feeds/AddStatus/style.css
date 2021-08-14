@@ -1,0 +1,65 @@
+.add-status{
+    width: fit-content;
+    /* border: 1px solid black; */
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.add-status span{
+    border-bottom: 2px solid green;
+    width: fit-content;
+    color: green;
+    font-weight: 600;
+}
+.error{
+    text-align: center;
+    color: red;
+    font-size: 1.15rem;
+}
+.add-status textarea{
+    width: 500px;
+    margin-top: 20px;
+    height: 150px;
+    border-color: green;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+@media (max-width: 1660px) {
+    .add-status textarea{
+        width: 300px;
+    }
+}
+@media (max-width: 1000px) {
+    .add-status textarea{
+        width:100%;
+    }
+    .add-status{
+        width: 80%;
+        margin: auto;
+    }
+}   
+
+@media (max-width: 525px) {
+    .add-status textarea{
+        width:100%;
+    }
+    .add-status{
+        width: 90%;
+        margin: auto;
+    }
+}   
+.add-status button{
+    border: none;
+    background-color: rgb(14, 155, 37);
+    color: white;
+    font-size: 1.5rem;
+    width: fit-content;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 10px 40px;
+    margin-top: 10px !important;
+}

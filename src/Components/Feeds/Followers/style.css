@@ -1,0 +1,32 @@
+.Users .user-section{
+    display: flex;
+    color: green;
+    margin: 20px;
+    font-weight: 500 ;
+    align-items: center; 
+}
+.Users .user-section p{
+    margin: 0;
+    margin-left: 5px;
+}
+.Users .user-section img{
+    width: 40px;
+}
+.Users .user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.follow-button{
+    border: none;
+    background-color: rgb(14, 155, 37);
+    color: white;
+    font-size: 1.15rem;
+    width: fit-content;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px !important;
+}

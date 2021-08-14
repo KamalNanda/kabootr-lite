@@ -1,0 +1,65 @@
+ .user-section{
+    display: flex;
+    color: green;
+    margin: 20px;
+    font-weight: 500 ;
+    align-items: center; 
+}
+@media (max-width: 1440px) {
+    .Users .user, .user{
+        flex-direction: column  ; 
+        align-items: flex-start !important;
+    }
+}
+@media (max-width: 1000px) {
+    .Users .user, .user{
+        flex-direction: row !important; 
+        align-items: flex-start !important;
+    }
+}
+@media (max-width: 525px) {
+    .Users .user, .user{
+        flex-direction: column !important ; 
+        align-items: flex-start !important;
+    }
+}
+ .user-section p{
+    margin: 0;
+    margin-left: 5px;
+}
+ .user-section img{
+    width: 40px;
+}
+ .user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.follow-button{
+    border: none;
+    background-color: rgb(14, 155, 37);
+    color: white;
+    font-size: 1.15rem;
+    width: fit-content;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px !important;
+}
+@media (max-width: 1000px) {
+    .follow-button, .unfollow-button{
+        margin-left: auto !important;
+    }
+}   
+@media (max-width: 525px) {
+    .follow-button, .unfollow-button{
+        margin-right: auto;
+    }
+}
+/* @media (max-width: 1440px) {
+    .follow-button, .unfollow-button{
+        margin-right: auto;
+    }
+}    */

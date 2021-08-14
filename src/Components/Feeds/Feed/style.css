@@ -1,0 +1,47 @@
+.feed-component{
+    border: 2px solid green;
+    padding: 20px ;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 500px;
+}
+@media (max-width: 1660px) {
+    .feed-component{
+        width: 300px;
+    }
+}
+@media (max-width: 1000px) {
+    .feed-component{
+        width:80%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+}   
+@media (max-width: 525px) {
+    .feed-component{
+        width:90%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+}   
+.feed-header .user-section{
+    display: flex;
+    color: green;
+    font-weight: 500 ;
+    align-items: center; 
+}
+.feed-header .user-section p{
+    margin: 0;
+    margin-left: 5px;
+}
+.feed-header .user-section img{
+    width: 40px;
+}
+.feed-header .feed-date{
+    font-size: 1rem;
+    margin: 5px 15px;
+    color: green;
+}
+.feed-body{
+    padding: 10px;
+}

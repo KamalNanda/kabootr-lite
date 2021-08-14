@@ -1,0 +1,44 @@
+.form-page{
+    background-size: cover !important;
+    height: 100vh;
+    display: flex; 
+    overflow: hidden;
+    justify-content: center;
+}
+.form-page p{
+    color: black;
+    font-weight: 700;
+    position: absolute;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    bottom: 20px;
+    right: 20px;
+}
+.form-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.logo-container{
+    position: absolute;
+    top: 10px;
+    left: 20px; 
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    height: fit-content; 
+    justify-content: space-between;
+    font-family: 'GlacialIndifferenceBold';
+    font-weight: 900; 
+}
+.logo-container p{
+    position: relative;
+    bottom: unset;
+    right: unset;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0
+}
+.logo{
+    width: 100px;
+}

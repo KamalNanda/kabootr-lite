@@ -1,0 +1,5 @@
+{
+    "API_ROOT" : "https://kabootr-lite.herokuapp.com",
+    "L_ROOT" : "http://localhost:2000",
+    "ROOT" : "https://kabootr-lite.herokuapp.com"
+}
