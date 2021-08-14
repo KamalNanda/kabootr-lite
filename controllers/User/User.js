@@ -1,4 +1,5 @@
 const User = require('../../models/User/User')
+const fetchUsers = require('../../utils/statusUtils')
 
 const register = async (req, res, next) => {
     const {username, password} = req.body
@@ -62,31 +63,75 @@ const followUser = async (req,res,next) => {
         next(error)
         return res.status(500).json({error : 'Internal Server Error'})
     }  
-      let followingsList = user.followings
-      let followersList = follower.followers
-      if(followingsList.indexOf(followerId) === -1 ){                   // User not following the follower yet
+    let followingsList = user.followings
+    let followersList = follower.followers
+    if(followingsList.indexOf(followerId) === -1 ){                   // User not following the follower yet
         followingsList.push(followerId)                                 // User following the follower
         followersList.push(userId)
-      }
-      else{                                                             // User already following the follower   
+    }
+    else{                                                             // User already following the follower   
         followingsList.splice(followingsList.indexOf(followerId), 1)    // User unfollowing the follower
         followersList.splice(followersList.indexOf(userId), 1)      
-      }
-      user.followings = followingsList
-      follower.followers = followersList
-      try{
+    }
+    user.followings = followingsList
+    follower.followers = followersList
+    try{
         await user.save()
         await follower.save()
-      }
-      catch(error){
-          console.log(error)
-          next(error)
-          return res.status(500).json({error : 'Internal Server Error'})
-      }  
-      res.status(200).json({user, message: "User Followed"}) 
-  
-  } 
+    }
+    catch(error){
+        console.log(error)
+        next(error)
+        return res.status(500).json({error : 'Internal Server Error'})
+    }  
+    res.status(200).json({user, message: "User Followed"}) 
+} 
+const fetchAllUsers = async () => {
+    let users = []
+    try{
+        users = await User.find({})
+    } catch(error){
+        console.log(error)
+        next(error)
+        return res.status(500).json({error : 'Internal Server Error'})
+    }  
+    return res.status(200).json({users})
+}
+
+const fetchFollowings = async () => {
+    const {userId} = req.body.params
+    let user  
+    let followings = []
+    try{
+        user = await User.findById(userId)
+    } catch(error){
+        console.log(error)
+        next(error)
+        return res.status(500).json({error : 'Internal Server Error'})
+    }  
+    followings = await fetchUsers(user.followings)
+    res.status(200).json({followings})
+}
+
+const fetchFollowers = async () => {
+    const {userId} = req.body.params
+    let user  
+    let followers = []
+    try{
+        user = await User.findById(userId)
+    } catch(error){
+        console.log(error)
+        next(error)
+        return res.status(500).json({error : 'Internal Server Error'})
+    }  
+    followers = await fetchUsers(user.followers)
+    res.status(200).json({followers})
+}
+
 
 exports.register = register
 exports.login = login
+exports.fetchAllUsers = fetchAllUsers
 exports.followUser = followUser
+exports.fetchFollowers = fetchFollowers
+exports.fetchFollowings = fetchFollowings

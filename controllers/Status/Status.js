@@ -1,6 +1,6 @@
 const User = require('../../models/User/User')
 const Status = require('../../models/Status/Status') 
-const fetchStatusesByCreatorId = require('../../utils/utils')
+const fetchStatusesByCreatorId = require('../../utils/statusUtils')
 
 const createNewStatus = async (req, res, next) => {
     const {body, createdBy} = req.body 
